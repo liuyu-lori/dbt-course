@@ -1,6 +1,6 @@
 airbnb:
   outputs:
-    staging:
+    staging: ##for testing.
       type: snowflake
       account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
       user: "{{ env_var('DBT_USER') }}"
@@ -23,7 +23,7 @@ airbnb:
       private_key_passphrase: "{{ env_var('PRIVATE_KEY_PASSPHRASE') }}"
 
       database: AIRBNB
-      schema: PROD
+      schema: PROD 
       threads: 4
       warehouse: COMPUTE_WH
     dev:
@@ -39,5 +39,4 @@ airbnb:
       schema: "DBT_{{ env_var('DBT_ENV_NAME') | upper | trim }}"
       threads: 4
       warehouse: COMPUTE_WH
-
   target: dev
