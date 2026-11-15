@@ -10,11 +10,7 @@ def model(dbt, session):
         materialized="table",
         packages=["textblob", "snowflake-connector-python[pandas]"]
     )
-
     reviews_df = dbt.ref("fct_reviews")
-
     df = reviews_df.to_pandas()
-
     df["SENTIMENT_SCORE"] = df["REVIEW_TEXT"].apply(get_sentiment)
-
-    return df
+    return df 

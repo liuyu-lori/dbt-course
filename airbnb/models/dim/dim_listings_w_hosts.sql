@@ -6,17 +6,17 @@ l AS (
         {{ ref('dim_listings_cleansed') }}
 ),
 h AS (
-    SELECT * 
+    SELECT *
     FROM {{ ref('dim_hosts_cleansed', v=2) }}
-    -- We are only adding the `, v=2` part at the Model Versioning section
 )
 
-SELECT 
+SELECT
     l.listing_id,
     l.listing_name,
     l.room_type,
     l.minimum_nights,
     l.price,
+    l.price_str,
     l.host_id,
     h.host_name,
     h.is_superhost as host_is_superhost,
